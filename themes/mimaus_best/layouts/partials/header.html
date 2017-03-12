@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Amiko" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/css/cooking_mimau.css"/>
+	<script src="/js/clicky_clicks.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ .Title }}</title>
+</head>
+
+
+<body class="body" background="/images/background.png" onload="COOKING_MIMAU.onLoad()">
+
+<div class="main_wrapper">
+	<div class="header_padding"></div>
+	<header class="main_header">
+		<div class="header_interior">
+			<a href="/"><img src="/images/cooking_mimau_header.png" class="header_image"/></a>
+		</div>
+	</header>
+	<div class="flex-container">
+		<nav class="navpanel">
+			<div class="nav_interior">
+				<div class="tree_search_wrapper">
+					<input id="tree_search_input" class="tree_search_input" type="text" name="tree_search_input" placeholder=" Filter...">
+				</div>
+				<ul class="navtree">
+					{{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+					<li class="nav_collapsable">
+						<a id="{{$taxonomyname}}_nav_item" href="javascript:void(0)">{{ $taxonomyname }}</a>
+						<ul>
+							{{ range $key, $value := $taxonomy }}
+							<li class="nav_collapsable">
+								<a id="{{$key}}_nav_item" href="javascript:void(0)">{{ $key }}</a>
+								<ul>
+									{{ range $value.Pages }}
+									<li hugo-nav="{{ .RelPermalink }}" class="nav_recipe_link">
+										<a href="{{ .Permalink }}" class="nav_recipe_link_text">{{ .LinkTitle }}</a>
+									</li>
+									{{ end }}
+								</ul>
+							</li>
+							{{ end }}
+						</ul>
+					</li>
+					{{ end }}
+				</ul>
+				<div class="new_recipe_section">
+					<a class="new_recipe_link" href="/new_recipe/">New Recipe >></a>
+				</div>
+			</div>
+		</nav>
+
+		<div class="recipe_list_wrapper">
+			<div class="recipe_list">

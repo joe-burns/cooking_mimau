@@ -1,0 +1,8 @@
+{{ partial "header.html" . }}
+
+<!-- DON'T SHOW THE FUCKING FIRST TO HIDE THE FUCKING SECTION HEADER -->
+{{ range first 5 (after 1 (where .Site.Pages.ByDate.Reverse "Type" "recipe")) }}
+	{{ partial "recipe_summary.html" . }}
+{{ end }}
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,17 @@
+<article class="article_recipe">
+	<h1 class="recipe_title"><a href="{{ .Permalink }}" class="recipe_link">{{ .Title }}</a></h1>
+	<p class="recipe_metadata">
+	Posted by {{ .Params.providedby }} on <time>{{ .Date.Format "January _2, 2006" }}</time> - {{ .Params.cuisines }} - {{ .Params.difficulties }} 
+	{{ if isset .Params "stolenfrom" }} - <a class="source_link" href="{{ .Params.stolenlink }}">{{ .Params.stolenfrom }}</a> {{ end }}
+	</p>
+	<div  class="recipe_description">
+		{{ .Params.description }}
+		<a class="showhide_link" id="{{.Title}}-showlink" href="javascript:void(0)" onclick="COOKING_MIMAU.showRecipe({{.Title}})">Show</a>
+		<a class="showhide_link" id="{{.Title}}-hidelink" style="display:none" href="javascript:void(0)" onclick="COOKING_MIMAU.hideRecipe({{.Title}})">Hide</a>
+	</div>
+	<div id="{{.Title}}-contents" class="recipe_contents">
+		{{ .Content }}
+	</div>
+	<p></p>
+	<hr class="heart_line"/>
+</article>

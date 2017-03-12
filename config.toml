@@ -1,0 +1,8 @@
+languageCode = "en-us"
+title = "Cooking Mimau"
+baseurl = ""
+relativeurls = true
+
+[taxonomies]
+cuisine = "cuisines"
+difficulty = "difficulties"
